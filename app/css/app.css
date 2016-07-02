@@ -188,16 +188,3 @@ nav button:nth-child(2) {
   width: 100%;
   min-height: 580px;
 }
-
-
-#drop_zone {
-  border: 2px dashed #bbb;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  padding: 25px;
-  text-align: center;
-  font: 40pt bold 'Vollkorn';
-  font-size: 40pt;
-  color: #bbb;
-}
