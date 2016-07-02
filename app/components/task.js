@@ -10,7 +10,7 @@ var testString = "CHECK ONE TWO";   //string for microphone test
 var testPass = false;   //for microphone test conditionals
 
 var micTestTime = 10;
-var recordTime = 3; //our arbitrary listening timeout length (in seconds)
+var recordTime = 5; //our arbitrary listening timeout length (in seconds)
 var stimonTime = 3;
 
 var stim_array = [];  //create an array for stimuli
@@ -117,10 +117,12 @@ var runExperiment = function(stim_array){
 	jsPsych.init({
 		timeline: timeline,
 		on_finish: function() {
-			console.log(data)
-			var csv_data = CSV([data]);
-			console.log(csv_data)
-			document.write(csv_data);
+		var theCode = "<a href='#' onclick="+ "downloadCSV({ 'filename': 'stock-data.csv' })" + ">Download CSV</a>"
+		document.write(theCode);
+			// console.log(data)
+			// var csv_data = CSV([data]);
+			// console.log(csv_data)
+			// document.write(csv_data);
 			// var encodedUri = encodeURI(csv_data);
 			// var link = document.createElement("a");
 			// link.setAttribute("href", csv_data);
