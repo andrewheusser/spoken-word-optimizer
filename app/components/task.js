@@ -6,9 +6,6 @@
 var window_height;
 var window_width;
 
-// var listLength = 3; // how long you want each list to be
-// var numberOfLists = 10;  // number of study/test blocks
-
 var testString = "CHECK ONE TWO";   //string for microphone test
 var testPass = false;   //for microphone test conditionals
 
@@ -127,18 +124,6 @@ var runExperiment = function(stim_array){
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-// LOAD DATA, PREPARE STIM AND THEN RUN THE EXPERIMENT /////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-// load the data, and once the data is loaded, prepare the stimuli and run the study!
-// loadData.then(function(loadedFileData){
-// 	prepareTrials(loadedFileData).then(function(trials){
-// 	})
-// });
-
-
-
-////////////////////////////////////////////////////////////////////////////////
 // HELPER FUNCTIONS ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -181,7 +166,6 @@ var testMic = function() {
 	startTimer();
 };
 
-
 //create a formatter to make each item in stim_array a jsPsych block
 var stimHTMLFormatter = function(stimulus){
 	var tag1 = "<" + stimulus.type + " style= '" + stimulus.style.join('; ') + "'>"
@@ -196,11 +180,11 @@ ListenUp = function() {
 	data.recalledWords.push([]) // creates an empty array for the next list
 	if (annyang) {
 		var logWord = function(word) {
-			var listIndex = data.recalledWords.length - 1;
+			var wordIndex = data.recalledWords.length - 1;
 			var splitWord = word.split(" ");
 			for (w in splitWord) {
 				var capWord = splitWord[w].toUpperCase();
-				data.recalledWords[listIndex].push(capWord);
+				data.recalledWords[wordIndex].push(capWord);
 				console.log("Logged " + capWord + ".");
 			};
 		};
@@ -219,19 +203,8 @@ ListenUp = function() {
 		annyang.addCommands(commandsLog); // Initialize annyang with our commands
 		annyang.start();
 	};
-
 	console.log('Microphone turned on.');
-	// console.log('Block Number: ' + list);
-	// console.log('Words: ' + subject_data.data.listWords[list-1]);
 	startTimer();      //starts counting seconds for timer to be turned off
-	setTimeout(function() {
-		var listIndex = data.recalledWords.length - 1;
-		console.log(data)
-		correctWords = computeAccuracy(data.listWords[listIndex],data.recalledWords[listIndex]);
-		data.correctWords.push(correctWords)
-		psiTurk.recordTrialData(data)
-
-	}, recordTime * 1000);
 };
 
 // create a timer function that turns off the microphone
@@ -242,17 +215,4 @@ var startTimer = function() {
 		annyang.abort();
 		console.log('Microphone turned off.');
 	}, recordTime * 1000);
-};
-
-//create a function to compare recalled words to the wordlist. Stores and displays results
-var computeAccuracy = function(listWords,recalledWords) {
-	var correctWords = []
-	for(idx1 in recalledWords){
-		for(idx2 in listWords){
-			if (recalledWords[idx1]===listWords[idx2]){
-				correctWords.push(recalledWords[idx1])
-			}
-		}
-	}
-	return correctWords
 };
