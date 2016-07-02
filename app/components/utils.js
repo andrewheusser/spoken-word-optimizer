@@ -91,3 +91,24 @@ var startTimer = function(time) {
 		console.log('Microphone turned off.');
 	}, time * 1000);
 };
+
+// Returns a csv from an array of objects with
+// values separated by tabs and rows separated by newlines
+function CSV(array) {
+    // Use first element to choose the keys and the order
+    var keys = Object.keys(array[0]);
+
+    // Build header
+    var result = keys.join("\t") + "\n";
+
+    // Add the rows
+    array.forEach(function(obj){
+        keys.forEach(function(k, ix){
+            if (ix) result += "\t";
+            result += obj[k];
+        });
+        result += "\n";
+    });
+
+    return result;
+}
