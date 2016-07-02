@@ -1,0 +1,19 @@
+{
+  "name": "spoken-word-optimizer",
+  "version": "1.0.0",
+  "description": "This app reads in a list of words, displays them and records speech to assess how distinguishable a word is.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "Andy Heusser",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.3",
+    "express": "^4.13.4"
+  }
+}
