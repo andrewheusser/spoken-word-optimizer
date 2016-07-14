@@ -10,8 +10,8 @@ var testString = "CHECK ONE TWO";   //string for microphone test
 var testPass = false;   //for microphone test conditionals
 
 var micTestTime = 10;
-var recordTime = 5; //our arbitrary listening timeout length (in seconds)
-var stimonTime = 3;
+var recordTime = 3; //our arbitrary listening timeout length (in seconds)
+var stimonTime = 2;
 
 var stim_array = [];  //create an array for stimuli
 var timeline = [];    //create the jsPsych timeline variable
